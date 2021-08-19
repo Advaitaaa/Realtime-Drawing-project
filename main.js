@@ -1,3 +1,9 @@
+noseX=0;
+noseY=0;
+leftwristX=0;
+rightwristX=0;
+difference=0;
+
 function setup()
 {
     canvas = createCanvas(550,550)
@@ -13,6 +19,11 @@ function setup()
 function draw()
 {
     background ("#FFC0CB")
+    text(Advaitaa, noseX, noseY);  // Funtion that is used to create a square//
+    fill ("#00FF00");
+    stroke ("#00FF00")
+
+    document.getElementById("square_side").innerHTML = "width and height of a square will be " + difference +"px";
 }
 
 function modelLoaded()
@@ -25,6 +36,14 @@ function gotposes(results)
 if(results.length > 0)
 {
     console.log(results)
-}
+    noseX=results[0].pose.nose.x;
+    noseY=results[0].pose.nose.y;
+    console.log("noseX="+noseX + "noseY" + noseY)
 
+    leftwristX=results[0].pose.leftWrist.x;
+    rightwristX=results[0].pose.rightWrist.X;
+    difference=floor (leftwristX - rightwristY);    //floor is a function used to remove the decimal points//
+    console.log("leftwristX"+leftwristX+"rightwristX" + rightwristX + "difference" + difference)
+    
+}
 }
