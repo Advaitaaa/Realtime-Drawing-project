@@ -7,19 +7,20 @@ difference=0;
 function setup()
 {
     canvas = createCanvas(550,550)
-    canvas = position (560,150)
+    canvas.position(560,150)
 
     video=createCapture(VIDEO);
     video.size(550,500)
 
     poseNet = ml5.poseNet(video,modelLoaded)
-    posenet.on("pose", gotposes)
+    poseNet.on("pose", gotposes)
 }
 
 function draw()
 {
     background ("#FFC0CB")
-    text(Advaitaa, noseX, noseY);  // Funtion that is used to create a square//
+    text("Advaitaa", noseX, noseY);  // Funtion that is used to create a text//
+    textSize(difference)
     fill ("#00FF00");
     stroke ("#00FF00")
 
@@ -41,8 +42,8 @@ if(results.length > 0)
     console.log("noseX="+noseX + "noseY" + noseY)
 
     leftwristX=results[0].pose.leftWrist.x;
-    rightwristX=results[0].pose.rightWrist.X;
-    difference=floor (leftwristX - rightwristY);    //floor is a function used to remove the decimal points//
+    rightwristX=results[0].pose.rightWrist.x;
+    difference=floor(leftwristX - rightwristX);    //floor is a function used to remove the decimal points//
     console.log("leftwristX"+leftwristX+"rightwristX" + rightwristX + "difference" + difference)
     
 }
